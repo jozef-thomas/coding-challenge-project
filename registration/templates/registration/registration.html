@@ -127,7 +127,7 @@
             </div>
             <!-- Login form and other content here -->
 
-            <form id = "registrationForm" action="{% url 'home' %}" method="post">
+            <form  id = "registrationForm" action="{% url 'home' %}" method="post">
                 {% csrf_token %}
                 <label for="username">Name</label>
                 <input type="text" id="prereg_name" name="prereg_name" placeholder="Username" required>
@@ -165,7 +165,7 @@
                 
                 <br>
 
-                <button type="button" onclick="validateEmail()" class="submit-button">Submit</button>
+                <button type="button" onclick="validateForm()" class="submit-button">Submit</button>
                 <button type="button" class="cancel-button">Cancel</button>
                 <p>
                     <a href="https://www.example.com">Click here</a> to contact our District Program Executive in case
@@ -200,6 +200,55 @@
         }
     }
 </script>
+
+
+<script>
+    function validateForm() {
+        var nameField = document.getElementById("prereg_name");
+        var emailField = document.getElementById("email");
+        var confirmEmailField = document.getElementById("id_prereg_email");
+        var mobileField = document.getElementById("id_prereg_mob");
+        var districtDropdown = document.getElementById("id_districtd");
+    
+        // Check if each field has a value
+        if (nameField.value.trim() === "") {
+            alert("Please enter your name.");
+            return;
+        }
+    
+        if (emailField.value.trim() === "") {
+            alert("Please enter your email.");
+            return;
+        }
+    
+        if (confirmEmailField.value.trim() === "") {
+            alert("Please confirm your email.");
+            return;
+        }
+    
+        if (mobileField.value.trim() === "") {
+            alert("Please enter your mobile number.");
+            return;
+        }
+    
+        if (districtDropdown.value === "0") {
+            alert("Please select a district from the dropdown.");
+            return;
+        }
+    
+        // Check if email and confirm email are the same
+        if (emailField.value !== confirmEmailField.value) {
+            alert("Email and Confirm Email must match.");
+            return;
+        }
+    
+        // All fields have values and email fields match, proceed with form submission
+        // Use form.submit() to submit the form programmatically
+        document.querySelector('form').submit();
+    }
+    </script>
+    
+    
 </body>
 
 </html>
