@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <style>
+        /* styles.css */
+#popup {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none;
+}
+
+    </style>
+</head>
+<body>
+    <h1>List of All Users</h1>
+    <ul>
+        {% for user in all_users %}
+            <li>
+                <strong>Username:</strong> {{ user.username }}<br>
+                <strong>Email:</strong> {{ user.email }}
+                <strong>Password</strong> {{ user.password }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <p>{{ message }}</p>
+    <div id="popup" class="hidden">
+        <p>{{ message }}</p>
+        <button id="closeButton">Close</button>
+    </div>
+
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Show the pop-up message when the page loads
+            $("#popup").removeClass("hidden");
+        });
+
+        // Function to close the pop-up message
+        function closePopup() {
+            $("#popup").addClass("hidden");
+        }
+
+        // Close the pop-up when the Close button is clicked
+        $("#closeButton").on("click", closePopup);
+    </script>
+</body>
+</html>

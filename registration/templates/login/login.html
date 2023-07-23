@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+       /* styles.css */
+#popup {
+    text-align: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#popup i {
+            font-size: 40px;  
+            color: green;     
+            display: block;  
+            margin: 0 auto;   
+            margin-bottom: 20px; 
+        }
+
+.hidden {
+    display: none;
+}
+
+#closeButton {
+            background-color: blue; /* Set the background color to blue */
+            color: white;           /* Set the text color to white */
+            border: none;           /* Remove border */
+            padding: 10px 20px;     /* Add padding */
+            font-size: 16px;        /* Set the font size */
+            cursor: pointer;        /* Change the cursor to a pointer on hover */
+            border-radius: 5px;     /* Add border radius */
+        }
+#closeButton:hover {
+            background-color: #007acc; /* Change the background color on hover */
+        }
+ 
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="user_Id">User ID</label>
+                                <input type="email" class="form-control" id="username" name="username" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" required>
+                            </div>
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if message %}
+        <div id="popup" class="hidden">
+            <i class="fas fa-check-circle"></i> <!-- Tick mark icon -->
+            <p>{{ message }}</p>
+            <button id="closeButton">Close</button>
+        </div>
+        {% endif %}
+    
+        
+    </div>
+    
+    {% if success_message %}
+<script>
+    alert("{{ success_message }}");
+</script>
+{% endif %}
+{% if validation_message %}
+<script>
+    alert("{{ validation_message }}");
+</script>
+{% endif %}
+
+        <script>
+            $(document).ready(function () {
+                // Show the pop-up message when the page loads
+                $("#popup").removeClass("hidden");
+            });
+    
+            // Function to close the pop-up message
+            function closePopup() {
+                $("#popup").addClass("hidden");
+            }
+    
+            // Close the pop-up when the Close button is clicked
+            $("#closeButton").on("click", closePopup);
+        </script>
+</body>
+</html>

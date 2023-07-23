@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP Page</title>
+</head>
+<body>
+    <h1>OTP Page</h1>
+    <h2>{{ note }}</h2>
+    {% if error_message %}
+    <script>
+        alert("{{ error_message }}");
+    </script>
+    {% endif %}
+    <form action =  "{% url 'otp' %}" method="post">
+        {% csrf_token %}
+        <label for="OTP">Enter the OTP:</label>
+        <input type="number" id="otp_received" name="otp_received">
+
+        
+        <input type= "hidden" id= "user_id" name= "user_id" value = "{{ user_id }}">
+
+      
+        <input type="hidden" id= "prereg_email" name= "prereg_email"  value = "{{ prereg_email }}">
+
+      
+        <input type="hidden" id= "prereg_name" name= "prereg_name"  value = "{{ prereg_name }}">
+
+       
+        <input type="hidden" id= "prereg_mob" name= "prereg_mob"  value = "{{ prereg_mob }}">
+
+      
+        <input type= "hidden" id= "districtd" name= "districtd"  value = "{{ districtd }}">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

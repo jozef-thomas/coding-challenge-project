@@ -1,0 +1,205 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Page</title>
+    <style>
+        /* Common styles for all screen sizes */
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            display: flex;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            max-width: 900px;
+            width: 90%;
+            max-height: 600px;
+        }
+
+        .login-image {
+            flex: 1;
+            min-height: 400px;
+            width: 50%;
+            background-image: url('/static/images/yip-image.jpg');
+            background-size: cover;
+            background-position: 30% center;
+        }
+
+        .login-form {
+            flex: 1;
+            padding: 20px;
+            width: 50%;
+        }
+
+        .login-form h2 {
+            margin-top: 0;
+        }
+
+        .login-form img {
+            display: block;
+            margin: -17px auto 20px;
+            max-width: 100%;
+        }
+
+        .login-form input[type="text"],
+        .login-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        select {
+    /* Your custom styles for the select element go here */
+    width: 100%;
+            padding: 10px;
+            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+    /* Add more styles as needed */
+}
+
+        .submit-button {
+            width: 29%;
+            padding: 10px 8px;
+            /* Adjust the padding to change the button size */
+            font-size: 14px;
+            /* Adjust the font size to change the button text size */
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .cancel-button {
+            /* Include the shared button properties */
+            width: 29%;
+            padding: 10px 8px;
+            font-size: 14px;
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* Media query for mobile screens (max-width: 767px) */
+        @media (max-width: 767px) {
+            .login-image {
+                display: none;
+                /* Hide the login-image on mobile screens */
+            }
+
+            .login-form {
+                width: 100%;
+                /* Adjust the login form width to fill the entire screen */
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-image">
+            <!-- Placeholder content (you can also use an empty div or a transparent image) -->
+            <img src="{% static 'images/tr.png' %}">
+        </div>
+        <div class="login-form">
+            <center>
+                <h2>YIP 2022 Pre Registration</h2>
+            </center>
+            <div>
+                <img src="{% static 'images/logonew-1.png' %}" alt="Login Image">
+            </div>
+            <!-- Login form and other content here -->
+
+            <form id = "registrationForm" action="{% url 'home' %}" method="post">
+                {% csrf_token %}
+                <label for="username">Name</label>
+                <input type="text" id="prereg_name" name="prereg_name" placeholder="Username" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="prereg_email" placeholder="Email" required>
+
+                <label for="confirm-email">Confirm Email:</label>
+                <input type="email" id="id_prereg_email" name="id_prereg_email" placeholder="Confirm Email" required>
+
+                <label for="id_prereg_mob">Mobile No</label>
+                <input type="text" id="id_prereg_mob" name="prereg_mob" placeholder="Mobile No" required>
+
+
+                <label for="id_districtd">District(Please Select the District of your Institution):</label>
+
+
+                <select name="districtd" id="id_districtd">
+                    <option value="0">Select District</option>
+                    <option value="1">Alappuzha</option>
+                    <option value="2">Ernakulam</option>
+                    <option value="3">Idukki</option>
+                    <option value="4">Kannur</option>
+                    <option value="5">Kasaragod</option>
+                    <option value="6">Kollam</option>
+                    <option value="7">Kottayam</option>
+                    <option value="8">Kozhikode</option>
+                    <option value="9">Malappuram</option>
+                    <option value="10">Palakkad</option>
+                    <option value="11">Pathanamthitta</option>
+                    <option value="12">Thiruvananthapuram</option>
+                    <option value="13">Thrissur</option>
+                    <option value="14">Wayanad</option>
+                </select>
+                
+                <br>
+
+                <button type="button" onclick="validateEmail()" class="submit-button">Submit</button>
+                <button type="button" class="cancel-button">Cancel</button>
+                <p>
+                    <a href="https://www.example.com">Click here</a> to contact our District Program Executive in case
+                    if you have any
+                    doubts,or don't have the Email ID or Mobile Number
+                </p>
+                <p>
+                    <a href="{% url 'updateform' %}">Click here To Login, If already Registered</a>
+
+                </p>
+            </form>
+        </div>
+    </div>
+    {% if alert_message %}
+<script>
+    alert("{{ alert_message }}");
+</script>
+{% endif %}
+
+
+
+<script>
+    function validateEmail() {
+        var email = document.getElementById('email').value;
+        var confirmEmail = document.getElementById('id_prereg_email').value;
+
+        if (email !== confirmEmail) {
+            alert('Emails do not match. Please enter the same email in both fields.');
+        } else {
+            var form = document.getElementById('registrationForm');
+            form.submit();
+        }
+    }
+</script>
+</body>
+
+</html>

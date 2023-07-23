@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            
+        }
+
+        .registration-form {
+            max-width: 600px;
+            width: 90%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 180px;
+        }
+
+        .registration-form h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .registration-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Create a two-column layout */
+        .registration-form .form-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .registration-form .form-col {
+            flex: 1;
+            padding: 5px;
+        }
+
+        .registration-form input[type="text"],
+        .registration-form input[type="email"],
+        .registration-form input[type="number"],
+        .registration-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .registration-form .form-col:nth-child(2) {
+            margin-left: 10px;
+            /* Add some space between the columns */
+        }
+
+        .registration-form .section-heading {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .registration-form button {
+            width: 19%;
+            padding: 12px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+
+
+        /* Style the "Cancel" button to have red color */
+        .registration-form .cancel-button {
+            background-color: #FF0000;
+        }
+
+        .registration-form .ins-req-button {
+            background-color: #ef970a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="registration-form">
+        <h2>Ideator Registration</h2>
+        <h3>Select Institution</h3>
+        <div class="form-row">
+            <div class="form-col">
+                <label for="district">District</label>
+                <select name="ideatorCategory" id="ideatorCategory">
+                    <option value="">Select District</option>
+                    <option value="0">Select District</option>
+                    <option value="1">Alappuzha</option>
+                    <option value="2">Ernakulam</option>
+                    <option value="3">Idukki</option>
+                    <option value="4">Kannur</option>
+                    <option value="5">Kasaragod</option>
+                    <option value="6">Kollam</option>
+                    <option value="7">Kottayam</option>
+                    <option value="8">Kozhikode</option>
+                    <option value="9">Malappuram</option>
+                    <option value="10">Palakkad</option>
+                    <option value="11">Pathanamthitta</option>
+                    <option value="12">Thiruvananthapuram</option>
+                    <option value="13">Thrissur</option>
+                    <option value="14">Wayanad</option>
+                    <!-- Add more ideator categories as needed -->
+                </select>
+
+
+            </div>
+
+            <div class="form-col">
+                <label for="institution">Institution</label>
+                <select name="ideatorCategory" id="ideatorCategory">
+                    <option value="">Select College</option>
+                    <option value="college1">Government Engineering College, Thiruvananthapuram</option>
+                    <option value="college2">Indian Institute of Technology, Palakkad</option>
+                    <option value="college3">St. Teresa's College, Ernakulam</option>
+                    <option value="college4">Mahatma Gandhi University, Kottayam</option>
+                    <option value="college5">National Institute of Technology Calicut</option>
+                    <option value="college6">Cochin University of Science and Technology</option>
+                    <option value="college7">Government Medical College, Thiruvananthapuram</option>
+                    <option value="college8">College of Engineering, Trivandrum</option>
+                    <option value="college9">St. Albert's College, Ernakulam</option>
+                    <option value="college10">Sree Kerala Varma College, Thrissur</option>
+                    <!-- Add more ideator categories as needed -->
+                </select>
+
+
+            </div>
+        </div>
+        <h4>If the Institution doesn't exist in above list, Please go For New Institution Request</h4> <button type="button" class="ins-req-button">New Institution Request</button>
+        <br>
+        <h2>Add Ideator Details</h2>
+        <form>
+            <div class="form-row">
+                <div class="form-col">
+                    <label for="ideatorName">Name (As Per Your Elementary School Certificate)</label>
+                    <input type="email" id="ideatorEmail" name="ideatorEmail" placeholder="Enter Ideator Name" required>
+
+                    <label for="ideatorEmail">Email:</label>
+                    <input type="email" id="ideatorEmail" name="ideatorEmail" placeholder="Enter Ideator Email"
+                        required>
+
+                    <label for="ideatorDOB">Date of Birth:</label>
+                    <input type="date" id="ideatorDOB" name="ideatorDOB" required>
+
+                    <label for="ideatorNumber">Contact Number:</label>
+                    <input type="number" id="ideatorNumber" name="ideatorNumber"
+                        placeholder="Enter Ideator Contact Number" required>
+
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender">
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="photoUpload">Photo Upload:</label>
+                    <input type="file" id="photoUpload" name="photoUpload" accept="image/*">
+
+                </div>
+
+                <div class="form-col">
+
+
+                    <label for="category">Category</label>
+                    <select name="category" id="category">
+                        <option value="">Select Category</option>
+                        <option value="school">School</option>
+                        <option value="college">College</option>
+                    </select>
+
+
+                    <label for="inst-cat">Institutional Category</label>
+                    <select name="institution" id="institution">
+                        <option value="">Select Institutional Category</option>
+                        <option value="high school">High School</option>
+                        <option value="ug">Undergraduate</option>
+                        <option value="pg">Postgraduate</option>
+                    </select>
+
+                    <label for="ysc">Year/Sem/Class</label>
+                    <select name="year" id="year">
+                        <option value="">Select Year</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+
+
+                    <label for="Department">Department</label>
+                    <select name="department" id="department">
+                        <option value="">Select Department</option>
+                        <option value="computer science">Computer Science</option>
+                        <option value="bba">BBA (Bachelor of Business Administration)</option>
+                        <option value="electrical engineering">Electrical Engineering</option>
+                        <option value="mechanical engineering">Mechanical Engineering</option>
+                        <option value="civil engineering">Civil Engineering</option>
+                        <option value="psychology">Psychology</option>
+                        <option value="economics">Economics</option>
+                        <option value="biotechnology">Biotechnology</option>
+                        <option value="english literature">English Literature</option>
+                        <option value="chemistry">Chemistry</option>
+                    </select>
+
+                    <label for="proofType">Type of Proof</label>
+                    <select name="proofType" id="proofType">
+                        <option value="">Select Type of Proof</option>
+                        <option value="aadhar">Aadhar</option>
+                        <option value="college id">College ID</option>
+                    </select>
+
+                    <label for="idCardUpload">ID Card Upload:</label>
+                    <input type="file" id="idCardUpload" name="idCardUpload" accept="image/*">
+
+
+        </form>
+
+
+    </div>
+    </div>
+    <button type="submit">Save Draft</button>
+        <button type="submit">Submit</button>
+        <button type="button" class="cancel-button">Cancel</button>
+    </form>
+    </div>
+</body>
+
+</html>
+
+
